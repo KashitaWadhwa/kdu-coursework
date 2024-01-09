@@ -5,26 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>kdu.backend</groupId>
-        <artifactId>Backend-homework-2</artifactId>
+        <artifactId>Backend-Kashita-homework-2</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>Q3</artifactId>
     <dependencies>
-        <dependency>
-            <groupId>org.jdom</groupId>
-            <artifactId>jdom2</artifactId>
-            <version>2.0.6</version> <!-- Check for the latest version on Maven Central -->
-        </dependency>
-
-        <!-- Add JUnit dependency -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -35,11 +21,20 @@
             <artifactId>logback-classic</artifactId>
             <version>1.0.7</version>
         </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.0.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
-
-
-
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

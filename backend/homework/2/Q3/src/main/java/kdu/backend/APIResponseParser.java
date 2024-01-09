@@ -1,7 +1,7 @@
 package kdu.backend;
 
 public class APIResponseParser {
-       public static Book parse(String response) {
+    public static Book parse(String response) {
         Book book = new Book();
         String endRule = "<";
 
