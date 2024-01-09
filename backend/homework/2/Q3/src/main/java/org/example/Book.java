@@ -1,6 +1,5 @@
 //Book.java
-package kdu.backend;
-
+package org.example;
 public class Book {
     private String title;
     private String author;
