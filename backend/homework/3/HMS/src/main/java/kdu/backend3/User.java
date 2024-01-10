@@ -91,7 +91,7 @@ public class User {
      * Question 3 Getters and Setters for insured and insurancePlan
      */
     // Getters and Setters for insured and insurancePlan
-    
+
     public boolean isInsured() {
         return insured;
     }
@@ -111,24 +111,5 @@ public class User {
      * Question 4
      * */
 
-    private int age;
-    private boolean smoking;
-
-    // Getters and Setters for age and smoking
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public boolean isSmoking() {
-        return smoking;
-    }
-
-    public void setSmoking(boolean smoking) {
-        this.smoking = smoking;
-    }
 }
 
