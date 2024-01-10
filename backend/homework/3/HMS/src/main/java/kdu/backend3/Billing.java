@@ -1,6 +1,10 @@
 package kdu.backend3;
 
 public class Billing {
+    private Billing() {
+        return 0;
+    }
+
     public static double[] computePaymentAmount(Patient patient, double amount) {
         double[] payments = new double[2];
 

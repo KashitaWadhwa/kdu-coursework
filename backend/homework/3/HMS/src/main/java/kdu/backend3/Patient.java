@@ -1,6 +1,6 @@
 package kdu.backend3;
 
-public class Patient extends User {
+public class Patient extends User implements InsuranceBrand {
     private long patientId;
     private boolean insured;
     /**
@@ -21,10 +21,12 @@ public class Patient extends User {
      * Question 2 Getter and Setter for insurancePlan
      */
     // Getter and Setter for insurancePlan
+    @Override
     public HealthInsurancePlan getInsurancePlan() {
         return insurancePlan;
     }
 
+    Override
     public void setInsurancePlan(HealthInsurancePlan insurancePlan) {
         this.insurancePlan = insurancePlan;
     }
@@ -38,10 +40,13 @@ public class Patient extends User {
         this.patientId = patientId;
     }
 
+
+    @Override
     public boolean isInsured() {
         return insured;
     }
 
+    @Override
     public void setInsured(boolean insured) {
         this.insured = insured;
     }

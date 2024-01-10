@@ -5,7 +5,7 @@ public abstract class HealthInsurancePlan {
     private InsuranceBrand offeredBy;
 
     // Constructor
-    public HealthInsurancePlan(double coverage) {
+    protected HealthInsurancePlan(double coverage) {
         this.coverage = coverage;
     }
 
@@ -21,12 +21,7 @@ public abstract class HealthInsurancePlan {
     /**
      *  Question 4 Abstract method for computing monthly premium
      */
-    // Abstract method for computing monthly premium
-//    public double computeMonthlyPremium(double salary) {
-//        return 0;
-//    }
 
-    // Abstract method for computing monthly premium
 
 
 

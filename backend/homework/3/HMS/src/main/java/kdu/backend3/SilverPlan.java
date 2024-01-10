@@ -2,7 +2,7 @@ package kdu.backend3;
 
 public abstract class SilverPlan extends HealthInsurancePlan {
     // Constructor for SilverPlan
-    public SilverPlan() {
+    protected SilverPlan() {
         super(0.7);
     }
 
