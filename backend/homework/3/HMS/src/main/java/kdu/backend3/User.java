@@ -1,4 +1,6 @@
 package kdu.backend3;
+
+package kdu.backend3;
 public class User {
     private long id;
     private String firstName;
@@ -14,6 +16,26 @@ public class User {
         this.lastName = lastName;
         this.gender = gender;
         this.email = email;
+    }
+
+    private int age;
+    private boolean smoking;
+
+    // Getters and Setters for age and smoking
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public boolean isSmoking() {
+        return smoking;
+    }
+
+    public void setSmoking(boolean smoking) {
+        this.smoking = smoking;
     }
 
     // Getter and Setter for id
@@ -61,6 +83,7 @@ public class User {
     }
 
 
+
     private boolean insured;
     private HealthInsurancePlan insurancePlan;
 
@@ -68,18 +91,19 @@ public class User {
      * Question 3 Getters and Setters for insured and insurancePlan
      */
     // Getters and Setters for insured and insurancePlan
+    @Override
     public boolean isInsured() {
         return insured;
     }
-
+    @Override
     public void setInsured(boolean insured) {
         this.insured = insured;
     }
-
+    @Override
     public HealthInsurancePlan getInsurancePlan() {
         return insurancePlan;
     }
-
+    @Override
     public void setInsurancePlan(HealthInsurancePlan insurancePlan) {
         this.insurancePlan = insurancePlan;
     }

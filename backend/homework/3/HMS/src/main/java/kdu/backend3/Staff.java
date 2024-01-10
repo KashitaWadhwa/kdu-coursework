@@ -1,51 +1,53 @@
+package kdu.backend3;
+
 public class Staff extends User {
+    private long staffId;
+    private int yearsOfExperience;
+    private String description;
+    private double salary;
+
     // Constructor
-    private Staff(long id, String firstName, String lastName, String gender, String email,
-                  long staffId, int yearsOfExperience, String description, double salary) {
+    public Staff(long id, String firstName, String lastName, String gender, String email,
+                 long staffId, int yearsOfExperience, String description, double salary) {
         super(id, firstName, lastName, gender, email);
+        this.staffId = staffId;
+        this.yearsOfExperience = yearsOfExperience;
+        this.description = description;
+        this.salary = salary;
     }
 
-    public static class Builder {
-        private final long id;
-        private final String firstName;
-        private final String lastName;
-        private final String gender;
-        private final String email;
-        private long staffId;
-        private int yearsOfExperience;
-        private String description;
-        private double salary;
+    // Getters and Setters for Staff class
+    public long getStaffId() {
+        return staffId;
+    }
 
-        public Builder(long id, String firstName, String lastName, String gender, String email) {
-            this.id = id;
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.gender = gender;
-            this.email = email;
-        }
+    public void setStaffId(long staffId) {
+        this.staffId = staffId;
+    }
 
-        public Builder staffId(long staffId) {
-            this.staffId = staffId;
-            return this;
-        }
+    public int getYearsOfExperience() {
+        return yearsOfExperience;
+    }
 
-        public Builder yearsOfExperience(int yearsOfExperience) {
-            this.yearsOfExperience = yearsOfExperience;
-            return this;
-        }
+    public void setYearsOfExperience(int yearsOfExperience) {
+        this.yearsOfExperience = yearsOfExperience;
+    }
 
-        public Builder description(String description) {
-            this.description = description;
-            return this;
-        }
+    public String getDescription() {
+        return description;
+    }
 
-        public Builder salary(double salary) {
-            this.salary = salary;
-            return this;
-        }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-        public Staff build() {
-            return new Staff(id, firstName, lastName, gender, email, staffId, yearsOfExperience, description, salary);
-        }
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 }
+
+
