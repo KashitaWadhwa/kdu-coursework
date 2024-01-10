@@ -91,19 +91,19 @@ public class User {
      * Question 3 Getters and Setters for insured and insurancePlan
      */
     // Getters and Setters for insured and insurancePlan
-    @Override
+    
     public boolean isInsured() {
         return insured;
     }
-    @Override
+
     public void setInsured(boolean insured) {
         this.insured = insured;
     }
-    @Override
+
     public HealthInsurancePlan getInsurancePlan() {
         return insurancePlan;
     }
-    @Override
+
     public void setInsurancePlan(HealthInsurancePlan insurancePlan) {
         this.insurancePlan = insurancePlan;
     }
