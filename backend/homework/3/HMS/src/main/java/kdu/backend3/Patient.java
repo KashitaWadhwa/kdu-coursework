@@ -3,9 +3,6 @@ package kdu.backend3;
 public class Patient extends User implements InsuranceBrand {
     private long patientId;
     private boolean insured;
-    /**
-     * Question 2
-     */
     private HealthInsurancePlan insurancePlan;
 
     // Constructor
@@ -17,16 +14,14 @@ public class Patient extends User implements InsuranceBrand {
         this.insurancePlan = null;
         // Default value is null
     }
-    /**
-     * Question 2 Getter and Setter for insurancePlan
-     */
+
     // Getter and Setter for insurancePlan
     @Override
     public HealthInsurancePlan getInsurancePlan() {
         return insurancePlan;
     }
 
-    Override
+    @Override
     public void setInsurancePlan(HealthInsurancePlan insurancePlan) {
         this.insurancePlan = insurancePlan;
     }
@@ -39,7 +34,6 @@ public class Patient extends User implements InsuranceBrand {
     public void setPatientId(long patientId) {
         this.patientId = patientId;
     }
-
 
     @Override
     public boolean isInsured() {
