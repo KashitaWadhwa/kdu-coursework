@@ -2,7 +2,7 @@ package kdu.backend3;
 
 public abstract class GoldPlan extends HealthInsurancePlan {
     // Constructor for GoldPlan
-    protected GoldPlan() {
+    public GoldPlan() {
         super(0.8);
     }
 

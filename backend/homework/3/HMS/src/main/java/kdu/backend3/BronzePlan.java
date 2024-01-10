@@ -2,7 +2,7 @@ package kdu.backend3;
 
 public abstract class BronzePlan extends HealthInsurancePlan {
     // Constructor for BronzePlan
-    protected BronzePlan() {
+    public BronzePlan() {
         super(0.6);
     }
 

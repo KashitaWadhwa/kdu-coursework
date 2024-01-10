@@ -2,7 +2,7 @@ package kdu.backend3;
 
 public abstract class PlatinumPlan extends HealthInsurancePlan {
     // Constructor for PlatinumPlan
-    protected PlatinumPlan() {
+    public PlatinumPlan() {
         super(0.9);
     }
 
