@@ -9,12 +9,11 @@ import java.util.List;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Q3{
 
-    Logging logger = new Logging();
+
 
     public static <T> void swap(T[] array, int index1, int index2) {
         if (array == null || index1 < 0 || index1 >= array.length || index2 < 0 || index2 >= array.length || index1 == index2) {
-            // Check for null array, valid indices, and distinct indices
-            logger.logInfo("Invalid parameters. Unable to swap elements.");
+
             return;
         }
 
@@ -25,8 +24,7 @@ public class Q3{
 
     public static <T> void swap(List<T> list, int index1, int index2) {
         if (list == null || index1 < 0 || index1 >= list.size() || index2 < 0 || index2 >= list.size() || index1 == index2) {
-            // Check for null list, valid indices, and distinct indices
-            logger.logInfo("Invalid parameters. Unable to swap elements.");
+
             return;
         }
 
