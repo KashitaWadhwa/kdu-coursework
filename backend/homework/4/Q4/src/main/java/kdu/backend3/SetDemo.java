@@ -1,30 +1,14 @@
 package kdu.backend3;
 
 import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
+
+
 public class SetDemo {
 
-    private static void hashSetDemo() {
-        Set<String> set1 = new HashSet<>();
-        set1.add("a");
-        set1.add("b");
-        //set1.add("a");
-
-        System.out.println("set1: " + set1);
-
-        Book book1 = new Book("Walden", "Henry Thoreau", 1854);
-        Book book2 = new Book("Walden", "Henry Thoreau", 1854);
-        Set<Book> set2 = new HashSet<>();
-        set2.add(book1);
-        set2.add(book2);
-        System.out.println("set2: " + set2);
-    }
-
-    public static Set<Book> treeSetDemo(Comparator<Book> comparator) {
+    public static void treeSetDemo(Comparator<Book> comparator) {
         Set<Book> books;
 
         if (comparator == null) {
@@ -49,7 +33,6 @@ public class SetDemo {
             System.out.println(book);
         }
 
-        return books;
     }
 
     public static void main(String[] args) {

@@ -12,11 +12,11 @@ public class Main {
         String businessClass = "business";
         String economyClass = "economy";
         logger.logInfo(ticketBooked + mmt.bookFlight("Kashita","Wadhwa",20,"female",businessClass,"A1"));
-        logger.logInfo(ticketBooked + mmt.bookFlight("Manya","Wadhwa",21,"female",businessClass,"A2"));
-        logger.logInfo(ticketBooked + mmt.bookFlight("Aarnav","Taneja",18,"male",businessClass,"A3"));
+        logger.logInfo(ticketBooked + mmt.bookFlight("Manya","M",21,"female",businessClass,"A2"));
+        logger.logInfo(ticketBooked + mmt.bookFlight("Aarnav","T",18,"male",businessClass,"A3"));
         logger.logInfo(ticketBooked + mmt.bookFlight("Aahan","Taneja",15,"male",businessClass,"A4"));
-        logger.logInfo(ticketBooked + mmt.bookFlight("Malvika","Wadhwa",9,"female",businessClass,"A5"));
-        logger.logInfo(ticketBooked + mmt.bookFlight("Harsh","Wadhwa",10,"male",businessClass,"A6"));
+        logger.logInfo(ticketBooked + mmt.bookFlight("Malvika","Wa",9,"female",businessClass,"A5"));
+        logger.logInfo(ticketBooked + mmt.bookFlight("Harsh","Wad",10,"male",economyClass,"A6"));
 
         List<Passenger> cnf = mmt.getConfirmedList();
         logger.logInfo(ticketCancelled + mmt.cancel("A3"));
