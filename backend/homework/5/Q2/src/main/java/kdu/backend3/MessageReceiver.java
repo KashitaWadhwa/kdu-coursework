@@ -1,5 +1,4 @@
 package kdu.backend3;
-
 class MessageReceiver implements Runnable {
     private final MessageQueue messageQueue;
     private final int receiverId;
@@ -11,11 +10,12 @@ class MessageReceiver implements Runnable {
 
     @Override
     public void run() {
-        while (true) {
+        while (!Thread.interrupted()) { // Check the interrupted status in the loop condition
             String message = messageQueue.getMessage();
             if (message != null) {
                 Logging.logInfo("Receiver " + receiverId + " received: " + message);
             }
         }
+        Logging.logInfo("Receiver " + receiverId + " is stopping.");
     }
 }

@@ -9,7 +9,7 @@ class Factor implements Runnable
     {
         n = x;
         t=new Thread(this,"Factor Thread");
-        System.out.println("\nFactor thread created : "+t);
+        Logging.logInfo("\nFactor thread created : "+t);
         t.start();
     }
 

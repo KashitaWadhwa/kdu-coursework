@@ -10,7 +10,7 @@ class MessageQueue {
         try {
             queue.put(message);
             synchronized (this) {
-                notify();  // Notify waiting threads that a new message is available
+                notifyAll();  // Notify waiting threads that a new message is available
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
