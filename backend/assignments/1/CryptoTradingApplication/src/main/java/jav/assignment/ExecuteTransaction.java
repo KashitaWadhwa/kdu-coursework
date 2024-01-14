@@ -36,39 +36,50 @@ public class ExecuteTransaction implements Runnable {
             }
 
         } finally {
-
+            // Count down the latch to signal completion
             latch.countDown();
         }
     }
 
     private void processBuyTransaction() {
-
+        // Extract necessary information from the transactionNode
         String coin = transactionNode.get("data").get("coin").asText();
         int quantity = transactionNode.get("data").get("quantity").asInt();
         String walletAddress = transactionNode.get("data").get("wallet_address").asText();
-        Logging.logInfo"Processing BUY transaction: " + transactionNode);
+
+        // Implement your BUY transaction logic here
+        // For example, update data in GlobalData or perform other operations
+        System.out.println("Processing BUY transaction: " + transactionNode);
     }
 
     private void processSellTransaction() {
-
+        // Extract necessary information from the transactionNode
         String coin = transactionNode.get("data").get("coin").asText();
         int quantity = transactionNode.get("data").get("quantity").asInt();
         String walletAddress = transactionNode.get("data").get("wallet_address").asText();
 
-        Logging.logInfo("Processing SELL transaction: " + transactionNode);
+        // Implement your SELL transaction logic here
+        // For example, update data in GlobalData or perform other operations
+        System.out.println("Processing SELL transaction: " + transactionNode);
     }
 
     private void processUpdatePriceTransaction() {
+        // Extract necessary information from the transactionNode
         String coin = transactionNode.get("data").get("coin").asText();
         double price = transactionNode.get("data").get("price").asDouble();
 
-        Logging.logInfo("Processing UPDATE_PRICE transaction: " + transactionNode);
+        // Implement your UPDATE_PRICE transaction logic here
+        // For example, update data in GlobalData or perform other operations
+        System.out.println("Processing UPDATE_PRICE transaction: " + transactionNode);
     }
 
     private void processAddVolumeTransaction() {
+        // Extract necessary information from the transactionNode
         String coin = transactionNode.get("data").get("coin").asText();
         int volume = transactionNode.get("data").get("volume").asInt();
 
-        Logging.logInfo("Processing ADD_VOLUME transaction: " + transactionNode);
+        // Implement your ADD_VOLUME transaction logic here
+        // For example, update data in GlobalData or perform other operations
+        System.out.println("Processing ADD_VOLUME transaction: " + transactionNode);
     }
 }
