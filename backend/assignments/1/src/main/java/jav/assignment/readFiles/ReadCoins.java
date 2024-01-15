@@ -1,19 +1,23 @@
 package jav.assignment.readFiles;
 
 import jav.assignment.Coins.Coin;
+import jav.assignment.Logging;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ReadCoins {
     private static final String CSV_SEPARATOR = ",";
+    private static final HashMap<String, Coin> coinNameAndCoinObject = new HashMap<>();
+    private static final HashMap<String, Coin>  coinSymbolAndCoinObject = new HashMap<>();
 
-    public static void readDataFromCoins(String coinsCsvFilePath, HashMap<String, Coin> coinNameAndCoinObject, HashMap<String, Coin> coinSymbolAndCoinObject) throws IOException {
+    public static void readDataFromCoins(String coinsCsvFilePath, ArrayList<String[]> arrayList) throws IOException {
 
-        String tradersCSV = "src/main/resources/coins.csv";
+        String coinCSV = coinsCsvFilePath;
         BufferedReader br = null;
         try {
-            File file = new File(tradersCSV);
+            File file = new File(coinCSV);
             FileReader fr = new FileReader(file);
             br = new BufferedReader(fr);
             String line = "";
@@ -31,8 +35,9 @@ public class ReadCoins {
                 coin.setCirculatingSupply(Long.parseLong(individualField[5]));
                 coinNameAndCoinObject.put(coin.getName(), coin);
                 coinSymbolAndCoinObject.put(coin.getSymbol(), coin);
+                arrayList.add(individualField);
             }
-            System.out.println("Coins data read");
+            Logging.logInfo("Coins data read");
 
         } catch(NumberFormatException numberFormatException) {
             throw new NumberFormatException("Problem occured while parsing data, check whether correct typecasting is being used for data type");
@@ -45,7 +50,7 @@ public class ReadCoins {
                 try {
                     br.close();
                 } catch (IOException e) {
-                    System.err.println("Couldn't close the reader resource, check for its availability");
+                    Logging.logInfo("Couldn't close the reader resource, check for its availability");
                 }
             }
         }

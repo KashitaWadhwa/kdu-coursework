@@ -12,10 +12,7 @@ public class BlockHash {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder transactionHash = new StringBuilder();
         Random rnd = new Random();
-/**
- * Introducing delay mimicking complex
- * calculation being performed.
- */
+
         for(double i=0;i<199999999; i++){
             i = i;
         }

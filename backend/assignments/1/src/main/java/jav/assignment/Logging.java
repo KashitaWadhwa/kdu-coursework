@@ -4,7 +4,7 @@ import org.slf4j.LoggerFactory;
 
 
 public class Logging {
-    private static final Logger logger = LoggerFactory.getLogger(jav.assignment.Logging.class);
+    private static final Logger logger = LoggerFactory.getLogger(Logging.class);
 
     public static void logInfo(String msg)
     {
@@ -14,4 +14,5 @@ public class Logging {
     public void logWarn(String msg){
         logger.warn(msg);
     }
+
 }

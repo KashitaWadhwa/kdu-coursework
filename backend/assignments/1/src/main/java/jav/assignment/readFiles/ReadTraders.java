@@ -1,18 +1,23 @@
 package jav.assignment.readFiles;
 
 
+import jav.assignment.Logging;
 import jav.assignment.traders.Trader;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class ReadTraders {
     private static final String CSV_SEPARATOR = ",";
+    private static final HashMap<String, Trader> tradersData = new HashMap<>();
+    private static final List<Trader> allTradersList = new ArrayList<>();
 
-    public static void readDataFromTraders(HashMap<String, Trader> tradersData, List<Trader> allTradersList) throws IOException {
+    public static void readDataFromTraders(String path, ArrayList<String[]> temp) throws IOException {
 
-        String tradersCSV = "src/main/resources/traders.csv";
+        String tradersCSV = path;
+
         BufferedReader br = null;
         try {
             File file = new File(tradersCSV);
@@ -33,8 +38,9 @@ public class ReadTraders {
 
                 tradersData.put(trader.getWalletAddress(), trader);
                 allTradersList.add(trader);
+                temp.add(individualField);
             }
-            System.out.println("Traders data read");
+            Logging.logInfo("Traders data read");
 
         } catch(NumberFormatException numberFormatException) {
             throw new NumberFormatException("Problem occurred while parsing data, check whether correct typecasting is being used for data type");
@@ -47,7 +53,7 @@ public class ReadTraders {
                 try {
                     br.close();
                 } catch (IOException e) {
-                    System.err.println("Couldn't close the reader resource, check for its availability");
+                    Logging.logInfo("Couldn't close the reader resource, check for its availability");
                 }
             }
         }

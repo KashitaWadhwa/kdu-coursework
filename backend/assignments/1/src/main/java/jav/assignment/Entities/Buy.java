@@ -1,26 +1,23 @@
 package jav.assignment.Entities;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import jav.assignment.Coins.Coin;
 import jav.assignment.globalObjects.GlobalData;
-import org.json.simple.JSONObject;
 
 public class Buy {
     private Coin coin;
-    private long quantity;
-    private String walletAddress;
+    private final long quantity;
+    private final String walletAddress;
     private String status;
 
 
-    public Buy(JSONObject obj) {
-        String coinSymbol = (String) obj.get("coin");
+    public Buy(JsonNode obj) {
+        String coinSymbol = obj.get("coin").asText();
         this.coin = GlobalData.coinSymbolAndCoinObject.get(coinSymbol);
-        this.quantity = (long) obj.get("quantity");
-        this.walletAddress = (String) obj.get("wallet_address");
+        this.quantity = obj.get("quantity").asLong();
+        this.walletAddress = obj.get("wallet_address").asText();
     }
 
-    public String getStatus() {
-        return status;
-    }
 
     public void setStatus(String status) {
         this.status = status;
@@ -38,16 +35,9 @@ public class Buy {
         return quantity;
     }
 
-    public void setQuantity(long quantity) {
-        this.quantity = quantity;
-    }
 
     public String getWalletAddress() {
         return walletAddress;
-    }
-
-    public void setWalletAddress(String walletAddress) {
-        this.walletAddress = walletAddress;
     }
 
     @Override

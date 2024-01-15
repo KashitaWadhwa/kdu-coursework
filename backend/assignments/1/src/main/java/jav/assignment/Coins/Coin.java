@@ -8,18 +8,26 @@ public class Coin {
     private Double price;
     private long circulatingSupply;
     private String status = "available";
-    private String transactionStatus = "completed";
+
+
+    public Coin(){
+
+    }
+    public Coin(int rank, String name, String symbol, Double price,long circulatingSupply) {
+        this.rank = rank;
+        this.name = name;
+        this.symbol = symbol;
+        this.price = price;
+        this.circulatingSupply  =circulatingSupply;
+    }
+
+
+
     public String getStatus() {
         return status;
     }
 
-    public String getTransactionStatus() {
-        return transactionStatus;
-    }
 
-    public void setTransactionStatus(String transactionStatus) {
-        this.transactionStatus = transactionStatus;
-    }
 
     public void setStatus(String status) {
         this.status = status;

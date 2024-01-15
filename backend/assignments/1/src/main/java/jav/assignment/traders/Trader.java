@@ -1,8 +1,6 @@
 package jav.assignment.traders;
 
 import jav.assignment.Coins.Coin;
-import jav.assignment.globalObjects.GlobalData;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,9 +23,6 @@ public class Trader {
         return revenue - spending;
     }
 
-    public void setProfit(Double profit) {
-        this.profit = profit;
-    }
 
     public Double getReleasedRevenue() {
         return releasedRevenue;
@@ -45,9 +40,7 @@ public class Trader {
         this.spending = spending;
     }
 
-    public int getSrNo() {
-        return srNo;
-    }
+
 
     public void setSrNo(int srNo) {
         this.srNo = srNo;
@@ -61,17 +54,12 @@ public class Trader {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public String getPhone() {
-        return phone;
-    }
+
 
     public void setPhone(String phone) {
         this.phone = phone;
