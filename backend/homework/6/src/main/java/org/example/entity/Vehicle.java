@@ -6,6 +6,9 @@ import java.util.Random;
 
 @Component
 public class Vehicle {
+    private Speaker speaker;
+
+    private Tyre tyre;
 
 
     private int price;
