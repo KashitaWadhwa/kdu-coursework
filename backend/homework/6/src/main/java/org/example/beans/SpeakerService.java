@@ -1,11 +1,12 @@
 package org.example.beans;
 
 import org.example.entity.Speaker;
-import org.example.entity.Tyre;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@Service
+@Configuration
 public class SpeakerService{
+    @Bean
     public Speaker generateSpeaker(){
         String brand= (Math.random() < 0.5)? "Sony" : " Bose";
         int price = (brand.equals("Sony")) ? 1000 : 1500;

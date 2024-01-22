@@ -7,11 +7,6 @@ import java.util.Random;
 @Component
 public class Vehicle {
 
-    @Autowired
-    private Speaker speaker;
-
-    @Autowired
-    private Tyre tyre;
 
     private int price;
     public Vehicle(Speaker speaker, Tyre tyre)
