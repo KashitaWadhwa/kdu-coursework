@@ -1,14 +1,21 @@
 package org.example.functions;
 
+import org.example.Logging;
 import org.example.entity.Vehicle;
 
 public class PrintDetails {
+    private PrintDetails() {
+    }
 
-    public void printVehicleDetails(Vehicle vehicle, String label) {
-        System.out.println(label);
-        System.out.println("Speaker Brand: " + vehicle.getSpeaker().getBrand());
-        System.out.println("Tyre Brand: " + vehicle.getTyre().getBrand());
-        System.out.println("Price: " + vehicle.getPrice());
-        System.out.println("---------------");
+    public static void printVehicleDetails(Vehicle vehicle, String label) {
+        Logging.logInfo(label);
+        if (vehicle != null) {
+            Logging.logInfo("Speaker Brand: " + vehicle.getSpeaker().getBrand());
+            Logging.logInfo("Tyre Brand: " + vehicle.getTyre().getBrand());
+            Logging.logInfo("Price: " + vehicle.getPrice());
+        } else {
+            Logging.logInfo("No vehicle details available.");
+        }
+        Logging.logInfo("---------------");
     }
 }

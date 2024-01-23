@@ -12,8 +12,7 @@ public class LowestPriceVehicle {
 
     @Autowired
     private List<Vehicle> vehicles;
-
-    public Vehicle findLowestPriceVehicle() {
+    public Vehicle findLowestPriceVehicle(List<Vehicle> vehicles) {
         return vehicles.stream()
                 .min(Comparator.comparing(Vehicle::getPrice))
                 .orElse(null);

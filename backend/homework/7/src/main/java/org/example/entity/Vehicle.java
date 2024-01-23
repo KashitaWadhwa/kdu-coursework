@@ -1,7 +1,5 @@
 package org.example.entity;
 
-import java.util.Random;
-
 public class Vehicle {
 
     private final Speaker speaker;
@@ -15,14 +13,6 @@ public class Vehicle {
         this.tyre=tyre;
         this.price=price;
     }
-//    Random random = new Random();
-//    int rValue = random.nextInt(10);
-//
-//    public int calculatePrice(){
-//        int generatePrice= (rValue*1000);
-//        return (int) (tyre.getPrice() + speaker.getPrice() + generatePrice);
-//    }
-
     public Speaker getSpeaker() {
         return speaker;
     }
