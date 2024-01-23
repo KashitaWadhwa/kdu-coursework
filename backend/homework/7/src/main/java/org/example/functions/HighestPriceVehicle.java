@@ -10,9 +10,12 @@ import java.util.List;
 @Service
 public class HighestPriceVehicle {
 
-    @Autowired
-    private List<Vehicle> vehicles;
+    public final List<Vehicle> vehicles;
 
+    @Autowired
+    public HighestPriceVehicle(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
     public Vehicle findHighestPriceVehicle(List<Vehicle> vehicles) {
         return vehicles.stream()
                 .max(Comparator.comparing(Vehicle::getPrice))

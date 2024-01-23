@@ -5,7 +5,6 @@ import org.example.services.factoryspeakerservice.Factory2SpeakerService;
 import org.example.services.factorytyreservice.Factory1TyreService;
 import org.example.services.factoryspeakerservice.Factory1SpeakerService;
 import org.example.services.factorytyreservice.Factory2TyreService;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

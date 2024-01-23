@@ -10,8 +10,13 @@ import java.util.List;
 @Component
 public class LowestPriceVehicle {
 
+
+    public final List<Vehicle> vehicles;
+
     @Autowired
-    private List<Vehicle> vehicles;
+    public LowestPriceVehicle(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
     public Vehicle findLowestPriceVehicle(List<Vehicle> vehicles) {
         return vehicles.stream()
                 .min(Comparator.comparing(Vehicle::getPrice))

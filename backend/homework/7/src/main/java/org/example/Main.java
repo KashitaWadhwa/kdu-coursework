@@ -8,12 +8,11 @@ import org.example.functions.LowestPriceVehicle;
 import org.example.functions.PrintDetails;
 import org.example.services.Factory1VehicleService;
 import org.example.services.Factory2VehicleService;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
-import java.util.logging.Logger;
+
 
 public class Main {
 
