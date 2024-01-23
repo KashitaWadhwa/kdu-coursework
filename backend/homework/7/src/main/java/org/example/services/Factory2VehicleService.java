@@ -21,16 +21,16 @@ public class Factory2VehicleService {
 
     private final Factory2TyreService factorytyreServices;
     private final Factory2SpeakerService factorySpeakerServices;
+    private final InventoryStore inventoryStore;
 
     @Autowired
     public Factory2VehicleService(@Qualifier("factory2TyreService") Factory2TyreService factoryTyreServices,
-                                  @Qualifier("factory2SpeakerService") Factory2SpeakerService factorySpeakerServices) {
+                                  @Qualifier("factory2SpeakerService") Factory2SpeakerService factorySpeakerServices,
+                                  InventoryStore inventoryStore) {
         this.factorytyreServices = factoryTyreServices;
         this.factorySpeakerServices = factorySpeakerServices;
+        this.inventoryStore = inventoryStore;
     }
-
-    @Autowired
-    private InventoryStore inventoryStore;
 
     public List<Vehicle> generateVehicle(int numberOfVehicles) {
         List<Vehicle> vehicles = new ArrayList<>();
