@@ -15,8 +15,4 @@ public class VehicleRequest {
     @Positive(message = "Price must be positive")
     private int price;
 
-    // Constructors, getters, and setters
-
-
-
 }

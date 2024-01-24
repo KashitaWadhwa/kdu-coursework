@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
 
 @Repository
 public class InventoryRepository {
@@ -39,7 +36,6 @@ public class InventoryRepository {
                 .ifPresent(existingVehicle -> {
                     existingVehicle.setName(updatedVehicle.getName());
                     existingVehicle.setPrice(updatedVehicle.getPrice());
-                    // Update other fields as needed
                 });
     }
 
