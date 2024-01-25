@@ -29,7 +29,7 @@ public class VehicleController {
      */
     @PostMapping("/add/vehicle")
     public String addVehicle(@Valid @RequestBody Request request){
-        return vehicleService.addVehicle(request).getResponse();
+        return vehicleService.addVehicle(request).getRes();
     }
 
     /**
@@ -60,7 +60,7 @@ public class VehicleController {
      */
     @DeleteMapping("/delete/vehicle/{id}")
     public String deleteVehicle(@PathVariable int id){
-        return vehicleService.removeVehicle(id).getResponse();
+        return vehicleService.removeVehicle(id).getRes();
     }
 
     /**
