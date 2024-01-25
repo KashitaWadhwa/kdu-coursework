@@ -9,9 +9,9 @@ public class Response {
     private int id;
     private String name;
     private int price;
-    private String response;
+    private String res;
 
-    public Response(String response){
-        this.response = response;
+    public Response(String res){
+        this.res = res;
     }
 }
