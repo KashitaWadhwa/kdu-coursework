@@ -8,7 +8,6 @@ import org.example.exceptions.NotBlankException;
 import org.example.exceptions.PositiveException;
 import org.example.service.VehicleService;
 import org.slf4j.Logger;
-import org.example.constants.ErrorMessages;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
