@@ -1,4 +1,3 @@
-// constants/ErrorMessages.java
 package org.example.constants;
 
 public enum ErrorMessages {
