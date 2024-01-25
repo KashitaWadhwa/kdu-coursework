@@ -1,3 +1,8 @@
+# Read Me First
+The following was discovered as part of building this project:
+
+* The original package name 'org.example.Springboot-Homework-3' is invalid and this project uses 'org.example.SpringbootHomework3' instead.
+
 # Getting Started
 
 ### Reference Documentation

@@ -7,8 +7,8 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class VehicleRequest {
-
+public class Request {
+    private int id;
     @NotBlank(message = "Name is required")
     private String name;
 

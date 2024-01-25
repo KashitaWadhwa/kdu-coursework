@@ -1,97 +1,115 @@
 package org.example.service;
 
-import org.example.dto.VehicleRequest;
-import org.example.dto.VehicleResponse;
+import org.example.dto.Request;
+import org.example.dto.Response;
 import org.example.entity.Vehicle;
-import org.example.repository.InventoryRepository;
-import org.springframework.beans.BeanUtils;
+import org.example.inventory.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
+import java.util.Objects;
 
 @Service
 public class VehicleService {
-
-    private final InventoryRepository inventoryRepository;
-
+    private String vehicleNotExist = "Vehicle with given id does not exist";
+    private final InventoryRepository inventory;
     @Autowired
-    public VehicleService(InventoryRepository inventoryRepository) {
-        this.inventoryRepository = inventoryRepository;
+    public VehicleService(InventoryRepository inventory){
+        this.inventory = inventory;
     }
 
-    public List<VehicleResponse> getAllVehicles() {
-        List<Vehicle> vehicles = inventoryRepository.getAllVehicles();
-        return mapToResponseList(vehicles);
+    /**
+     * add vehicle to the inventory
+     * @param request request DTO
+     * @return response DTO
+     */
+    public Response addVehicle(Request request){
+        Vehicle vehicle = inventory.getVehicle(request.getId());
+        if(Objects.isNull(vehicle)){
+            vehicle = getRequest(request);
+        }
+        else {
+            return getResponse(vehicle,"Vehicle with same id already exists");
+        }
+        inventory.addVehicle(vehicle);
+        return getResponse(vehicle, "Vehicle added successfully");
     }
 
-    public VehicleResponse getVehicle(int vehicleId) {
-        Optional<Vehicle> optionalVehicle = inventoryRepository.getVehicleById(vehicleId);
-        return optionalVehicle.map(this::mapToResponse).orElse(null);
+    /**
+     * fetches vehicle from the inventory
+     * @param id id of vehicle
+     * @return response DTO
+     */
+    public Response getVehicle(int id){
+        Vehicle vehicle = inventory.getVehicle(id);
+        if(Objects.isNull(vehicle)){
+            return new Response(vehicleNotExist);
+        }
+        return getResponse(vehicle,"Vehicle fetched");
     }
 
-    public void addVehicle(VehicleRequest vehicleRequest) {
-        Vehicle vehicle = mapToEntity(vehicleRequest);
-        inventoryRepository.addVehicle(vehicle);
+    /**
+     * updates vehicle details in the inventory using id
+     * @param id id of vehicle
+     * @param newVehicle request DTO for updated details
+     * @return response DTO
+     */
+    public Response updateVehicle(int id,Request newVehicle){
+        Vehicle vehicle = inventory.getVehicle(id);
+        if(Objects.isNull(vehicle)){
+            return new Response(vehicleNotExist);
+        }
+        else {
+            Vehicle nVehicle = getRequest(newVehicle);
+            inventory.updateVehicle(vehicle,nVehicle);
+            return getResponse(nVehicle,"Vehicle updated successfully");
+        }
     }
 
-    public void updateVehicle(int vehicleId, VehicleRequest updatedVehicleRequest) {
-        Optional<Vehicle> optionalVehicle = inventoryRepository.getVehicleById(vehicleId);
-        optionalVehicle.ifPresent(existingVehicle -> {
-            Vehicle updatedVehicle = mapToEntity(updatedVehicleRequest);
-            inventoryRepository.updateVehicle(vehicleId, updatedVehicle);
-        });
+    /**
+     * deletes vehicle from the inventory
+     * @param id id of vehicle
+     * @return response DTO
+     */
+    public Response removeVehicle(int id){
+        Vehicle vehicle = inventory.getVehicle(id);
+        if(Objects.isNull(vehicle)){
+            return new Response(vehicleNotExist);
+        }
+        else {
+            inventory.deleteVehicle(vehicle);
+            return getResponse(vehicle,"Vehicle deleted successfully");
+        }
     }
 
-    public void deleteVehicle(int vehicleId) {
-        inventoryRepository.deleteVehicle(vehicleId);
+    /**
+     * @return DTO of vehicle
+     */
+    public Response getMostExpensiveVehicle(){
+        Vehicle vehicle;
+        vehicle = inventory.getMostExpensive();
+
+        return getResponse(vehicle,"");
+    }
+    public Response getLeastExpensiveVehicle(){
+        Vehicle vehicle;
+        vehicle = inventory.getLeastExpensive();
+
+        return getResponse(vehicle,"");
     }
 
-    private VehicleResponse mapToResponse(Vehicle vehicle) {
-        VehicleResponse response = new VehicleResponse();
-        BeanUtils.copyProperties(vehicle, response);
-        return response;
-    }
-    public List<VehicleResponse> getMostExpensiveVehicles(int limit) {
-        List<Vehicle> vehicles = inventoryRepository.getAllVehicles();
 
-        // Sort vehicles by price in descending order
-        List<Vehicle> mostExpensiveVehicles = vehicles.stream()
-                .sorted(Comparator.comparingInt(Vehicle::getPrice).reversed())
-                .limit(limit)
-                .toList();
-
-        return mapToResponseList(mostExpensiveVehicles);
+    /**
+     * converts request DTO to vehicle
+     */
+    public Vehicle getRequest(Request request){
+        return new Vehicle(request.getId(),request.getName(),request.getPrice());
     }
 
-    public List<VehicleResponse> getLeastExpensiveVehicles(int limit) {
-        List<Vehicle> vehicles = inventoryRepository.getAllVehicles();
-
-        // Sort vehicles by price in ascending order
-        List<Vehicle> leastExpensiveVehicles = vehicles.stream()
-                .sorted(Comparator.comparingInt(Vehicle::getPrice))
-                .limit(limit)
-                .toList();
-
-        return mapToResponseList(leastExpensiveVehicles);
+    /**
+     * converts vehicle to response DTO
+     */
+    public Response getResponse(Vehicle vehicle, String response){
+        return new Response(vehicle.getId(),vehicle.getName(),vehicle.getPrice(),response);
     }
-
-    private List<VehicleResponse> mapToResponseList(List<Vehicle> vehicles) {
-        return vehicles.stream()
-                .map(this::mapToResponse)
-                .toList();
-    }
-
-    private Vehicle mapToEntity(VehicleRequest vehicleRequest) {
-        Vehicle vehicle = new Vehicle();
-        vehicle.setName(vehicleRequest.getName());
-        vehicle.setPrice(vehicleRequest.getPrice());
-        return vehicle;
-    }
-
 }
