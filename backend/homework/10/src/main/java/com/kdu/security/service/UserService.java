@@ -49,7 +49,7 @@ public class UserService {
         userDTO.setUsername(user.getUserName());
         userDTO.setPassword(user.getPassword());
         userDTO.setEmail(user.getEmail());
-        // Add any other fields relevant to security
+
         return userDTO;
     }
 
@@ -58,7 +58,7 @@ public class UserService {
 
         user.setUserName(authDTO.getUsername());
         user.setPassword(passwordEncoder.encode(authDTO.getPassword()));
-        // You may set other fields as needed
+
         return user;
     }
 }

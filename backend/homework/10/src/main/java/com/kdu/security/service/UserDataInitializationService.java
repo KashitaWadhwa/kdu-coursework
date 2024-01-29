@@ -24,7 +24,7 @@ public class UserDataInitializationService {
 
     @PostConstruct
     public void initializeUserData() {
-        // Add default users during application startup
+
         List<User> defaultUsers = getDefaultUsers();
         defaultUsers.forEach(userDAO::addUser);
     }
@@ -32,7 +32,7 @@ public class UserDataInitializationService {
     private List<User> getDefaultUsers() {
         User user1 = new User("rohit", passwordEncoder.encode("Testing123"), "rohit@example.com", "ROLE_ADMIN");
         User user2 = new User("ajay", passwordEncoder.encode("Testing123"), "ajay@example.com", "ROLE_USER");
-        // Add more default users as needed
+
 
         return Arrays.asList(user1, user2);
     }
