@@ -6,6 +6,8 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,13 +22,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class TokenGeneratorFilter extends OncePerRequestFilter {
+    public final Logger logger = LoggerFactory.getLogger(TokenGeneratorFilter.class);
+
     public static final String JWT_KEY = "jxgEQeXHuPq8VdbyYFNkANdudQ53YUn4";
     public static final String JWT_HEADER = "Authorization";
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(authentication);
+        logger.info("Authentication: {}",authentication);
         if (null != authentication) {
             SecretKey key = Keys.hmacShaKeyFor(JWT_KEY.getBytes(StandardCharsets.UTF_8));
             String jwt = Jwts.builder().issuer("kdu").subject("JWT Token")
@@ -36,7 +40,7 @@ public class TokenGeneratorFilter extends OncePerRequestFilter {
                     .expiration(new Date((new Date()).getTime() + 30000000))
                     .signWith(key).compact();
             response.setHeader(JWT_HEADER, jwt);
-            System.out.println(jwt);
+            logger.info("Logging JWT: {} ",jwt);
         }
 
         filterChain.doFilter(request, response);
