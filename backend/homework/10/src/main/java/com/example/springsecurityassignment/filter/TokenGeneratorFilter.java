@@ -1,4 +1,4 @@
-package com.kdu.security.filter;
+package com.example.springsecurityassignment.filter;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -26,6 +26,7 @@ public class TokenGeneratorFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(authentication);
         if (null != authentication) {
             SecretKey key = Keys.hmacShaKeyFor(JWT_KEY.getBytes(StandardCharsets.UTF_8));
             String jwt = Jwts.builder().issuer("kdu").subject("JWT Token")
@@ -35,6 +36,7 @@ public class TokenGeneratorFilter extends OncePerRequestFilter {
                     .expiration(new Date((new Date()).getTime() + 30000000))
                     .signWith(key).compact();
             response.setHeader(JWT_HEADER, jwt);
+            System.out.println(jwt);
         }
 
         filterChain.doFilter(request, response);
@@ -42,7 +44,7 @@ public class TokenGeneratorFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        return !request.getServletPath().equals("/User/login");
+        return !request.getServletPath().equals("/auth/login");
     }
 
     private String populateAuthorities(Collection<? extends GrantedAuthority> collection) {
@@ -53,3 +55,4 @@ public class TokenGeneratorFilter extends OncePerRequestFilter {
         return String.join(",", authoritiesSet);
     }
 }
+

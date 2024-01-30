@@ -1,5 +1,4 @@
-package com.kdu.security.filter;
-
+package com.example.springsecurityassignment.filter;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -30,8 +29,10 @@ public class TokenValidatorFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
         String jwt = request.getHeader(JWT_HEADER);
+        logger.info("Logging JWT: {}", jwt);
         if (null != jwt) {
             try {
+
                 SecretKey key = Keys.hmacShaKeyFor(JWT_KEY.getBytes(StandardCharsets.UTF_8));
 
                 Claims claims = Jwts.parser()
@@ -39,22 +40,27 @@ public class TokenValidatorFilter extends OncePerRequestFilter {
                         .build()
                         .parseSignedClaims(jwt)
                         .getPayload();
+
                 String username = String.valueOf(claims.get("username"));
                 String authorities = (String) claims.get("roles");
+                logger.info("Logging username: {}", username);
+                logger.info("Logging authorities: {}", authorities);
                 Authentication auth = new UsernamePasswordAuthenticationToken(username, null,
                         AuthorityUtils.commaSeparatedStringToAuthorityList(authorities));
+
                 logger.info(String.valueOf(auth));
+
                 SecurityContextHolder.getContext().setAuthentication(auth);
+
             } catch (Exception e) {
                 throw new BadCredentialsException("Invalid Token received!");
             }
-
         }
         filterChain.doFilter(request, response);
     }
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        return request.getServletPath().equals("/person/login");
+        return request.getServletPath().equals("/auth/login");
     }
 }

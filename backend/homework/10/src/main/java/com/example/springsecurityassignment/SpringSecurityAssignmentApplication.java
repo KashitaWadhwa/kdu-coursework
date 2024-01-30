@@ -1,13 +1,13 @@
-package com.kdu.security;
+package com.example.springsecurityassignment;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SecurityApplication {
+public class SpringSecurityAssignmentApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SecurityApplication.class, args);
+		SpringApplication.run(SpringSecurityAssignmentApplication.class, args);
 	}
 
 }
