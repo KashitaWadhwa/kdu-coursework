@@ -35,6 +35,4 @@ public class Shift {
     @Column(name = "time_zone",length=32)
     private String timeZone;
 
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    private Tenant tenant;
 }

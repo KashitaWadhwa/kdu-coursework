@@ -1,19 +1,21 @@
 package com.kdu.jpa.dto;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.kdu.jpa.entity.Shift;
+import com.kdu.jpa.entity.Tenant;
+import com.kdu.jpa.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.util.UUID;
 @Data
 @AllArgsConstructor
 public class ShiftUserDTO {
 
     @JsonDeserialize
-    private UUID shiftId;
+    private Shift shiftId;
     @JsonDeserialize
-    private UUID userId;
+    private User userId;
     @JsonDeserialize
-    private UUID tenantId;
+    private Tenant tenantId;
 
 }

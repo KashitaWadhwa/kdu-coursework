@@ -5,6 +5,9 @@ import com.kdu.jpa.entity.Shift;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.util.List;
+
 @Service
 public class ShiftService {
 
@@ -17,5 +20,9 @@ public class ShiftService {
 
     public void saveShift(Shift shift) {
         shiftRepository.save(shift);
+    }
+
+    public List<Shift> findTop3ShiftsByDateRange(Date startDate, Date endDate) {
+        return shiftRepository.findTop3ShiftsByDateRange(startDate, endDate);
     }
 }

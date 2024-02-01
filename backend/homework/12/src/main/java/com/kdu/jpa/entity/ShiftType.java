@@ -33,6 +33,4 @@ public class ShiftType {
 
     private String timezone;
 
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    private Tenant tenant;
 }

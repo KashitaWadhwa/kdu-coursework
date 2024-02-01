@@ -11,7 +11,6 @@ public class UserMapper {
         user.setUsername(usersDTO.getUsername());
         user.setLoggedIn(usersDTO.getLoggedIn());
         user.setTimeZone("India");
-        //user.setTenant(usersDTO.getTenant());
         return user;
     }
 }

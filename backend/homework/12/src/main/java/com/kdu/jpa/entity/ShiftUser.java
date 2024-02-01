@@ -18,13 +18,14 @@ public class ShiftUser {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "shift_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn()
     private Shift shiftId;
 
-    @Column(name = "user_id")
+    @ManyToOne(fetch = FetchType.EAGER)
     private User userId;
 
-    @Column(name = "tenant_id")
+    @ManyToOne(fetch = FetchType.EAGER)
     private Tenant tenantId;
 
 }
