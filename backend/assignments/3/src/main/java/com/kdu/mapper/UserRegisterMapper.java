@@ -1,7 +1,7 @@
 package com.kdu.mapper;
 
 import com.kdu.model.dto.request.UserRegisterRequestDTO;
-import com.kdu.model.entity.UserModel;
+import com.kdu.model.entity.UserRegister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -18,15 +18,15 @@ public class UserRegisterMapper {
     }
 
 
-    public UserModel userMapping(UserRegisterRequestDTO userRegisterRequestDTO){
-        UserModel userModel = new UserModel();
-        userModel.setUsername(userRegisterRequestDTO.getUsername());
-        userModel.setFirstName(userRegisterRequestDTO.getFirstName());
-        userModel.setLastName(userRegisterRequestDTO.getLastName());
-        userModel.setEmail(userRegisterRequestDTO.getEmail());
-        userModel.setName(userRegisterRequestDTO.getName());
-        userModel.setPassword(passwordEncoder.encode(userRegisterRequestDTO.getPassword()));
+    public UserRegister userMapping(UserRegisterRequestDTO userRegisterRequestDTO){
+        UserRegister userRegister = new UserRegister();
+        userRegister.setUsername(userRegisterRequestDTO.getUsername());
+        userRegister.setFirstName(userRegisterRequestDTO.getFirstName());
+        userRegister.setLastName(userRegisterRequestDTO.getLastName());
+        userRegister.setEmail(userRegisterRequestDTO.getEmail());
+        userRegister.setName(userRegisterRequestDTO.getName());
+        userRegister.setPassword(passwordEncoder.encode(userRegisterRequestDTO.getPassword()));
 
-        return userModel;
+        return userRegister;
     }
 }

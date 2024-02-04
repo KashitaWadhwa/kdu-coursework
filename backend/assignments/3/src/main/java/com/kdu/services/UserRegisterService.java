@@ -3,7 +3,7 @@ package com.kdu.services;
 import com.kdu.model.dto.request.UserRegisterRequestDTO;
 import com.kdu.model.dto.response.UserResponseDTO;
 import com.kdu.mapper.UserRegisterMapper;
-import com.kdu.model.entity.UserModel;
+import com.kdu.model.entity.UserRegister;
 import com.kdu.dao.UserRegisterRepository;
 import com.kdu.model.utility.JwttokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +27,8 @@ public class UserRegisterService {
     }
 
     public UserResponseDTO registerUser(UserRegisterRequestDTO userRegisterRequestDTO){
-        UserModel userModel = userRegisterMapper.userMapping(userRegisterRequestDTO);
-        userRegisterRepository.save(userModel);
+        UserRegister userRegister = userRegisterMapper.userMapping(userRegisterRequestDTO);
+        userRegisterRepository.save(userRegister);
         String token = jwttokenUtils.getTokenNew(userRegisterRequestDTO);
         return new UserResponseDTO("User added successfully",token);
     }

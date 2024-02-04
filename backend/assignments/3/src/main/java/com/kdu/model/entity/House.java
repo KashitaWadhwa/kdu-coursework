@@ -25,7 +25,7 @@ public class House {
     private String houseName;
 
     @ManyToMany(mappedBy = "houses",cascade = CascadeType.ALL)
-    private List<UserModel> usersList = new ArrayList<>();
+    private List<UserRegister> usersList = new ArrayList<>();
 
     @OneToMany(mappedBy = "house")
     @JsonManagedReference

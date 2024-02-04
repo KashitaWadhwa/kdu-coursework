@@ -4,16 +4,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.kdu.exceptions.custom.CustomException;
 import com.kdu.exceptions.custom.InvalidAuthException;
 import com.kdu.model.dto.response.*;
-import com.kdu.smarthome.exceptions.custom.*;
 import com.kdu.model.dto.request.HouseRegisterRequestDTO;
 import com.kdu.model.entity.Device;
 import com.kdu.model.entity.House;
 import com.kdu.model.entity.Room;
-import com.kdu.model.entity.UserModel;
+import com.kdu.model.entity.UserRegister;
 import com.kdu.mapper.HouseRegisterMapper;
 import com.kdu.dao.HouseRegisterRepository;
 import com.kdu.dao.UserRegisterRepository;
-import com.kdu.smarthome.model.dto.response.*;
 import com.kdu.model.utility.JsonUtils;
 import com.kdu.model.utility.JwttokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,11 +45,11 @@ public class HouseRegisterService {
 
     public HouseResponseDTO addHouse(HouseRegisterRequestDTO houseRegisterRequestDTO, String token){
         String username = jwtUtil.decodeToken(token);
-        Optional<UserModel> optionalUser = userRegisterRepository.findByUsername(username);
+        Optional<UserRegister> optionalUser = userRegisterRepository.findByUsername(username);
         if(optionalUser.isEmpty())
             throw new InvalidAuthException("User not found");
 
-        UserModel user = optionalUser.get();
+        UserRegister user = optionalUser.get();
         user.setRole("ROLE_ADMIN");
         House house = houseRegisterMapper.houseMapping(houseRegisterRequestDTO,user);
         userRegisterRepository.save(user);
@@ -61,16 +59,16 @@ public class HouseRegisterService {
 
     public FormatResponseDTO addUser(Long id, String username, String token){
         String userAdmin = jwtUtil.decodeToken(token);
-        Optional<UserModel> optionalUser = userRegisterRepository.findByUsername(userAdmin);
+        Optional<UserRegister> optionalUser = userRegisterRepository.findByUsername(userAdmin);
         if(optionalUser.isEmpty())
             throw new InvalidAuthException("User Not found");
 
-        UserModel user = optionalUser.get();
+        UserRegister user = optionalUser.get();
         if(user.getRole().equals("ROLE_ADMIN")){
             Optional<House> optionalHouse = houseRegisterRepository.findById(id);
             if(optionalHouse.isPresent()){
                 House house = optionalHouse.get();
-                Optional<UserModel> optionalUserModel = userRegisterRepository.findByUsername(username);
+                Optional<UserRegister> optionalUserModel = userRegisterRepository.findByUsername(username);
                 if(optionalUserModel.isEmpty())
                     throw new InvalidAuthException("User Not found");
 

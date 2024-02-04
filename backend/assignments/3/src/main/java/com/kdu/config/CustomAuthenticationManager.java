@@ -1,7 +1,7 @@
 package com.kdu.config;
 
 import com.kdu.dao.UserRegisterRepository;
-import com.kdu.model.entity.UserModel;
+import com.kdu.model.entity.UserRegister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -33,14 +33,14 @@ public class CustomAuthenticationManager implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String pwd = authentication.getCredentials().toString();
-        Optional<UserModel> optionalUser = userRegisterRepository.findByUsername(username);
+        Optional<UserRegister> optionalUser = userRegisterRepository.findByUsername(username);
 
         if(optionalUser.isEmpty()){
             throw new BadCredentialsException("No user registered with this details!");
         }else{
-            UserModel userModel = optionalUser.get();
-            if (passwordEncoder().matches(pwd, userModel.getPassword())) {
-                return new UsernamePasswordAuthenticationToken(username, pwd, getGrantedAuthorities(userModel.getRole()));
+            UserRegister userRegister = optionalUser.get();
+            if (passwordEncoder().matches(pwd, userRegister.getPassword())) {
+                return new UsernamePasswordAuthenticationToken(username, pwd, getGrantedAuthorities(userRegister.getRole()));
             } else {
                 throw new BadCredentialsException("Invalid password!");
             }

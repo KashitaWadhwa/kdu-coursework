@@ -1,7 +1,7 @@
 package com.kdu.config;
 
 import com.kdu.dao.UserRegisterRepository;
-import com.kdu.model.entity.UserModel;
+import com.kdu.model.entity.UserRegister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,20 +26,20 @@ public class CustomUserDetails implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<UserModel> optionalUserModel = userRegisterRepository.findByUsername(username);
-        UserModel userModel = null;
-        if(optionalUserModel.isPresent())   userModel = optionalUserModel.get();
+        Optional<UserRegister> optionalUserModel = userRegisterRepository.findByUsername(username);
+        UserRegister userRegister = null;
+        if(optionalUserModel.isPresent())   userRegister = optionalUserModel.get();
         String personUserName;
         String personPassword;
         List<GrantedAuthority> authorities;
 
-        if (userModel == null) {
+        if (userRegister == null) {
             throw new UsernameNotFoundException("User details not found for user: ".concat(username).concat(". Please register first."));
         } else {
-            personUserName = userModel.getUsername();
-            personPassword = userModel.getPassword();
+            personUserName = userRegister.getUsername();
+            personPassword = userRegister.getPassword();
             authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority(userModel.getRole()));
+            authorities.add(new SimpleGrantedAuthority(userRegister.getRole()));
         }
         return new User(personUserName, personPassword, authorities);
     }

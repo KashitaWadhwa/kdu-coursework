@@ -16,11 +16,11 @@ public class Device {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="device_id")
     private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "room_id")
-    @JsonBackReference
     private Room room;
 
     private String kickstonId;

@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserModel {
+public class UserRegister {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +33,9 @@ public class UserModel {
 
     private String email;
 
-    @ManyToMany
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<House> houses = new ArrayList<>();
 
 }
