@@ -1,0 +1,87 @@
+.image-container {
+    position: relative;
+    width: 304px; 
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.image-text {
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+}
+
+
+.image-description {
+    /* position: relative; */
+  
+    transform: translateX(-50%);
+    color: rgb(208, 12, 12);
+    font-size: 18px;
+    text-align: center;
+}
+
+
+
+/* Box Model */
+.container {
+    border: 1px solid black; 
+    padding: 10px; 
+  }
+
+/* Tag Selector */
+h1 {
+  font-size: 24px; 
+}
+
+.list{
+    top: 100px;
+
+}
+
+/* Pseudo Selectors */
+a:hover {
+  background-color: yellow;
+  width: 100px;
+  width: 100px;
+  margin-bottom: 20px; 
+}
+
+/* Pseudo Elements */
+footer::before {
+  content: "Footer: "; 
+}
+
+/* Descendant Selector */
+main section ul li {
+  list-style-type: circle; 
+}
+
+/* Child Selector */
+main > section {
+  padding: 20px;
+}
+
+/* Adjacent Sibling Selector */
+h3 + p {
+  margin-top: 0; 
+}
+
+/* General Sibling Selector */
+h1 ~ p {
+  font-style: italic; 
+}
+
+
+Border-box
+* {
+  box-sizing: border-box; 
+}
+
+/* Content-box */
+header h1 {
+  box-sizing: content-box; 
+}
