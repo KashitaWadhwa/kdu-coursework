@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .container {
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 90%;
+    margin: 1rem auto;   
+    align-items: center;
+  
+    .heading {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+  
+    .add_todo input {
+      margin-top: 2rem;
+      font-size: large;
+      padding: 1rem;
+      border-radius: 10rem;
+      width: 20rem;
+    }
+  
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      color: white;
+      background-color: black;
+      border-radius: 5rem;
+  
+      &:hover {
+        transform: scale(0.95);
+        transition-duration: 75ms;
+        transition: ease-in-out;
+        background-color: gray;
+      }
+    }
+  
+    .display-area {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+      width: 95%;
+      height: 90%;
+      border-radius: 0.5rem;
+      border: 1px solid black;
+      overflow-y: auto;
+      margin-bottom: 1rem;
+  
+      .sub-heading {
+        font-size: 2.0rem;
+        font-weight: 400;
+        margin-top: 1rem;
+      }
+  
+      .display {
+        font-size: larger;
+      }
+  
+      .todo-item {
+        font-size: x-large;
+        font-style: italic;
+        margin: 0.5rem 1.2rem;
+        overflow-y: auto;
+        text-wrap: wrap;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+  
+        .btn-delete {
+          margin-left: 2rem;
+          background-color: rgb(232, 58, 58);
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+          color: white;
+          border-radius: 5rem;
+  
+          &:hover {
+            transform: scale(0.95);
+            transition-duration: 75ms;
+            transition: ease-in-out;
+            background-color: gray;
+          }
+        }
+      }
+    }
+  
+    @media screen and (max-width: 500px) {
+      .add_todo input {
+        margin-top: 2rem;
+        font-size: large;
+        padding: 1rem;
+        border-radius: 10rem;
+        width: auto;
+      }
+  
+      .btn {
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+        color: white;
+        background-color: black;
+        border-radius: 4rem;
+      }
+    }
+  }
+  
