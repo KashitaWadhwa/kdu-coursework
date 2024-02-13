@@ -57,9 +57,8 @@ exports.getAllPosts = (req, res) => {
 //getting post by id
 exports.getPostbyId = (req, res) => {
     try {
-        console.log("HELLO");
-        const {id} = req.params.id;
-        console.log("Printing req",req)
+        const id = req.params.id;
+
         //validating the input
         if(!id){
             return res.status(400).json({
