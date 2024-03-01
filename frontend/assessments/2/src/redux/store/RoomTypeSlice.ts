@@ -1,5 +1,3 @@
-// store/roomTypeSlice.ts
-
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RoomType } from '../types';
 
@@ -10,7 +8,7 @@ interface RoomTypeState {
 
 const initialState: RoomTypeState = {
   selectedRoomType: null,
-  roomTypes: [], // Initialize with empty array, will be updated after fetching room types from API
+  roomTypes: [], 
 };
 
 const roomTypeSlice = createSlice({

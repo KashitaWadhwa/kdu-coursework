@@ -1,5 +1,3 @@
-// store/roomTypeSlice.ts
-
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RoomType } from '../types';
 

@@ -1,4 +1,3 @@
-// types.ts
 
 export interface RoomType {
     id: number;
