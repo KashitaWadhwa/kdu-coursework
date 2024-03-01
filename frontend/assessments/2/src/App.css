@@ -1,0 +1,11 @@
+.heading{
+    text-align: center;
+  }
+  .submit{
+    background-color:#F08A5D ;
+    color : white;
+    padding: 10px; 
+    border-color:#F08A5D;
+    font-size:larger;
+    font-weight:600;
+  }
