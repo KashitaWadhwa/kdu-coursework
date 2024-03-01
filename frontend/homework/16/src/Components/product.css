@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+    margin: auto;
+    justify-content: center;
+}
+
+img{
+    width: 140px;
+    margin-top: 10px;
+    height: 200px;
+    object-fit: cover;}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 10px;
+    width: 370px;
+    height: 400px;
+    margin: 10px; 
+}
+
+.card:hover{
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
+    transform: scale(1.05);
+    cursor: pointer;
+}
