@@ -1,0 +1,27 @@
+.Skills{
+    border:1px solid black;
+    background-color: #9BD2FF;
+    width:50%;
+    height:400px;
+    padding: 1.5rem;
+
+}
+
+.heading{
+    color:rgb(241, 122, 25);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size:xx-large;
+}
+.list{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    color:rgb(6, 126, 6);
+    font-size:large;
+}
+.Item{
+    margin-top:0.5rem;
+}
