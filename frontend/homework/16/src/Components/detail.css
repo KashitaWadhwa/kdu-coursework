@@ -1,0 +1,42 @@
+.container{
+    width: 90%;
+}
+
+.box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap:4rem;
+    flex-wrap: wrap;
+}
+.left{
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img{
+    object-fit: cover;
+    width: 300px;
+    height: 450px;
+}
+.right{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    font-size: x-large;
+}
+
+.btn{
+    padding: 1rem;
+    margin: 1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #000;
+    color: #fff;
+    font-size: large;
+    cursor: pointer;
+    width: max-content;
+}
